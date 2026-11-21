@@ -24,11 +24,16 @@ if (!defined('BASEPATH')) {
     define('BASEPATH', dirname(__DIR__, 2));
 }
 
+// Muat kredensial rahasia lokal / hosting jika tersedia (diabaikan oleh .gitignore)
+if (file_exists(__DIR__ . '/secrets.php')) {
+    require_once __DIR__ . '/secrets.php';
+}
+
 // 3. Konfigurasi Database MySQL
-define("HOST_DB", "localhost");
-define("NAME_DB", "db_project");
-define("USER_DB", "root");
-define("PASS_DB", "");            // Password default XAMPP (sistem juga otomatis mencoba "12345" dan "root")
+if (!defined('HOST_DB')) define("HOST_DB", getenv('DB_HOST') ?: "localhost");
+if (!defined('NAME_DB')) define("NAME_DB", getenv('DB_NAME') ?: "db_project");
+if (!defined('USER_DB')) define("USER_DB", getenv('DB_USER') ?: "root");
+if (!defined('PASS_DB')) define("PASS_DB", getenv('DB_PASS') !== false ? getenv('DB_PASS') : ""); // Password default XAMPP
 
 // 4. Informasi Aplikasi
 define("APP_NAME", "UNKLAB SmartClinic");
@@ -40,11 +45,6 @@ define("APP_AUTHOR", "UKESMAS Universitas Klabat");
 // 5. Kunci Enkripsi & Keamanan Aplikasi (Ganti salt jika diperlukan)
 define('APP_ENC_KEY', hash('sha256', 'UNKLAB_SMARTCLINIC_SECRET_KEY_2026', true));
 define('APP_BIDX_KEY', hash('sha256', 'UNKLAB_SMARTCLINIC_BLIND_INDEX_SALT_KEY_2026', true));
-
-// Muat kredensial rahasia lokal jika tersedia (diabaikan oleh .gitignore)
-if (file_exists(__DIR__ . '/secrets.php')) {
-    require_once __DIR__ . '/secrets.php';
-}
 
 // 6. KONFIGURASI GOOGLE GEMINI AI
 //    Cara termudah mengisi API Key (pilih salah satu):
