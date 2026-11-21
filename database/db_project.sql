@@ -4,8 +4,6 @@
 -- PERHATIAN: berkas ini menghapus (DROP) dan membuat ulang seluruh tabel.
 -- =====================================================================
 
-CREATE DATABASE IF NOT EXISTS `db_project` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE `db_project`;
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
