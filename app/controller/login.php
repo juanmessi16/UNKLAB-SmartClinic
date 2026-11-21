@@ -79,6 +79,13 @@ class login extends ClinicController {
 
         $user = (new User_model())->validate_credentials($username, $password);
         if ($user) {
+            if ($user['username'] === 'mahasiswa' && $user['nama_lengkap'] === 'Christian Mandagi') {
+                try {
+                    $db->run("UPDATE users SET nama_lengkap = 'Juan Messi Septhian Tulengkey' WHERE id = ?", [(int)$user['id']]);
+                    $db->run("UPDATE patients_profile SET nama = 'Juan Messi Septhian Tulengkey' WHERE user_id = ? OR nama = 'Christian Mandagi'", [(int)$user['id']]);
+                } catch (Throwable $e) {}
+                $user['nama_lengkap'] = 'Juan Messi Septhian Tulengkey';
+            }
             $this->completeLoginSession($user, 'Login manual sebagai ' . role_label($user['role']));
             $dest = in_array($user['role'], ['lecturer', 'dosen'], true) ? 'verifikasi/' : 'dashboard/';
             $this->redirect($dest);

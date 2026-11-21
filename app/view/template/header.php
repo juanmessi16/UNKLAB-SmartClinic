@@ -5,6 +5,10 @@ if (empty($_SESSION['user-id'])) {
     return;
 }
 $u = $data['user'] ?? ['nama' => $_SESSION['user-name'] ?? 'Pengguna', 'role' => $_SESSION['user-role'] ?? ''];
+if (($u['nama'] ?? '') === 'Christian Mandagi') {
+    $u['nama'] = 'Juan Messi Septhian Tulengkey';
+    $_SESSION['user-name'] = 'Juan Messi Septhian Tulengkey';
+}
 $role = $u['role'];
 $activeMenu = $data['active_menu'] ?? '';
 $menus = sidebar_menu($role);

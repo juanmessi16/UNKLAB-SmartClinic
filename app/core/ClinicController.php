@@ -44,6 +44,14 @@ class ClinicController extends Controller {
                 $userRow = $db->fetchOne("SELECT active_session_token, nama_lengkap FROM users WHERE id = ? LIMIT 1", [$userId]);
                 $dbToken = $userRow ? (string)($userRow['active_session_token'] ?? '') : '';
 
+                // Sinkronisasi otomatis nama akun demo mahasiswa jika di database masih nama lama
+                if ($userId === 5 && ($userRow['nama_lengkap'] ?? '') === 'Christian Mandagi') {
+                    $db->run("UPDATE users SET nama_lengkap = 'Juan Messi Septhian Tulengkey' WHERE id = 5");
+                    $db->run("UPDATE patients_profile SET nama = 'Juan Messi Septhian Tulengkey' WHERE user_id = 5 OR nama = 'Christian Mandagi'");
+                    $userRow['nama_lengkap'] = 'Juan Messi Septhian Tulengkey';
+                    $_SESSION['user-name'] = 'Juan Messi Septhian Tulengkey';
+                }
+
                 // Migrasi / sinkronisasi awal bila salah satu token masih kosong
                 if ($dbToken === '' && $clientToken !== '') {
                     $db->run("UPDATE users SET active_session_token = ? WHERE id = ?", [$clientToken, $userId]);
@@ -87,9 +95,14 @@ class ClinicController extends Controller {
     }
 
     protected function currentUser() {
+        $nama = $_SESSION['user-name'] ?? 'Pengguna';
+        if ($nama === 'Christian Mandagi') {
+            $nama = 'Juan Messi Septhian Tulengkey';
+            $_SESSION['user-name'] = $nama;
+        }
         return [
             'id'         => (int)($_SESSION['user-id'] ?? 0),
-            'nama'       => $_SESSION['user-name'] ?? 'Pengguna',
+            'nama'       => $nama,
             'username'   => $_SESSION['user-username'] ?? '',
             'role'       => $_SESSION['user-role'] ?? '',
             'email'      => $_SESSION['user-email'] ?? '',
