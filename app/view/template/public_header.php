@@ -16,7 +16,7 @@ $loggedIn = !empty($_SESSION['user-id']);
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="<?= asset('vendor/bootstrap/css/bootstrap.min.css') ?>">
   <link rel="stylesheet" href="<?= asset('vendor/bootstrap-icons/bootstrap-icons.min.css') ?>">
-  <link rel="stylesheet" href="<?= asset('css/app.css') ?>?v=<?= APP_VERSION ?>.5">
+  <link rel="stylesheet" href="<?= asset('css/app.css') ?>?v=<?= APP_VERSION ?>.6">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg public-nav py-2">

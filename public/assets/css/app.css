@@ -1088,6 +1088,83 @@ a:hover { color: var(--teal-800); }
   white-space: pre;
 }
 
+/* ---------- QR / Barcode Camera Scanner (Verifikasi SKS) ---------- */
+.scanner-wrapper {
+  width: 100%;
+  max-width: 360px;
+  margin: 0 auto;
+}
+.scanner-card {
+  background: var(--slate-50);
+  border: 1.5px solid var(--teal-200);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+.scanner-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem;
+  padding: .7rem .95rem;
+  background: #ffffff;
+  border-bottom: 1px solid var(--slate-200);
+}
+.scanner-viewport-box {
+  position: relative;
+  width: 100%;
+  background: #0f172a;
+  min-height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.qr-reader-viewport {
+  width: 100%;
+}
+.qr-reader-viewport video {
+  width: 100% !important;
+  height: auto !important;
+  display: block;
+  object-fit: cover;
+}
+.scanner-guide-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+.scanner-frame {
+  width: 210px;
+  height: 210px;
+  border: 2px solid rgba(20, 184, 166, .85);
+  border-radius: 14px;
+  box-shadow: 0 0 0 999px rgba(15, 23, 42, .28);
+  position: relative;
+  overflow: hidden;
+}
+.scanner-laser {
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #14b8a6, #2dd4bf, #14b8a6, transparent);
+  box-shadow: 0 0 8px #14b8a6;
+  animation: scanLaser 2.1s ease-in-out infinite;
+}
+@keyframes scanLaser {
+  0%, 100% { top: 10%; }
+  50% { top: 88%; }
+}
+.scanner-footer {
+  padding: .65rem .9rem;
+  background: #ffffff;
+  border-top: 1px solid var(--slate-200);
+}
+
 /* ---------- Surat sakit (cetak) ---------- */
 .letter {
   background: #ffffff;
@@ -1331,6 +1408,12 @@ a:hover { color: var(--teal-800); }
 }
 
 @media (max-width: 575.98px) {
+  #verifyForm .btn {
+    flex: 1 1 100%;
+    justify-content: center;
+    font-size: .92rem;
+    padding: .6rem .9rem;
+  }
   .content { padding: .85rem .75rem 4.75rem; }
   .welcome-banner {
     padding: 1.05rem 1rem;
