@@ -258,7 +258,13 @@ class Controller {
 	public function start_default_session_app(){
 		$this->send_security_headers();
 		if (session_status() === PHP_SESSION_NONE) {
-			$is_https = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || ($_SERVER['SERVER_PORT'] ?? 80) == 443;
+			$host = $_SERVER['HTTP_HOST'] ?? 'localhost';
+			$is_https = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
+				|| (($_SERVER['SERVER_PORT'] ?? 80) == 443)
+				|| (!empty($_SERVER['HTTP_X_FORWARDED_PROTO']) && strtolower($_SERVER['HTTP_X_FORWARDED_PROTO']) === 'https')
+				|| (!empty($_SERVER['HTTP_X_FORWARDED_SSL']) && strtolower($_SERVER['HTTP_X_FORWARDED_SSL']) === 'on')
+				|| (!empty($_SERVER['HTTP_CF_VISITOR']) && strpos($_SERVER['HTTP_CF_VISITOR'], 'https') !== false)
+				|| (bool)preg_match('/\.(app|dev|page)(:\d+)?$/i', $host);
 			@session_set_cookie_params([
 				'lifetime' => 0,
 				'path'     => '/',

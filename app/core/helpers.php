@@ -12,7 +12,7 @@ function url($path = '') {
 }
 
 function asset($path) {
-    return rtrim(APP_PATH, '/') . '/assets/' . ltrim($path, '/');
+    return rtrim(APP_PATH, '/') . '/public/assets/' . ltrim($path, '/');
 }
 
 function tgl($date, $withTime = false) {

@@ -1,13 +1,5 @@
-Options -Indexes -Multiviews
+Options -Indexes
 ServerSignature Off
-
-ErrorDocument 400 /madisonschool/errors/index/400
-ErrorDocument 401 /madisonschool/errors/index/401
-ErrorDocument 403 /madisonschool/errors/index/403
-ErrorDocument 404 /madisonschool/errors/index/404
-ErrorDocument 405 /madisonschool/errors/index/405
-ErrorDocument 500 /madisonschool/errors/index/500
-ErrorDocument 503 /madisonschool/errors/index/503
 
 <IfModule mod_headers.c>
     Header always set X-Content-Type-Options "nosniff"

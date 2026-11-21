@@ -4,15 +4,20 @@
  * Framework MVC Native PHP
  */
 
-// 1. Deteksi Base URL / APP_PATH secara otomatis
+// 1. Deteksi Base URL / APP_PATH secara otomatis (mendukung Reverse Proxy, Cloudflare & HSTS .app/.dev)
 if (!defined('APP_PATH')) {
     if (php_sapi_name() === 'cli' || empty($_SERVER['HTTP_HOST'])) {
         $folderName = basename(dirname(__DIR__, 2));
         define("APP_PATH", "http://localhost/" . $folderName);
     } else {
-        $is_https = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || (isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 443);
-        $protocol = $is_https ? 'https://' : 'http://';
         $host = $_SERVER['HTTP_HOST'];
+        $is_https = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
+            || (isset($_SERVER['SERVER_PORT']) && (int)$_SERVER['SERVER_PORT'] === 443)
+            || (!empty($_SERVER['HTTP_X_FORWARDED_PROTO']) && strtolower($_SERVER['HTTP_X_FORWARDED_PROTO']) === 'https')
+            || (!empty($_SERVER['HTTP_X_FORWARDED_SSL']) && strtolower($_SERVER['HTTP_X_FORWARDED_SSL']) === 'on')
+            || (!empty($_SERVER['HTTP_CF_VISITOR']) && strpos($_SERVER['HTTP_CF_VISITOR'], 'https') !== false)
+            || (bool)preg_match('/\.(app|dev|page)(:\d+)?$/i', $host);
+        $protocol = $is_https ? 'https://' : 'http://';
         $scriptDir = rtrim(str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME'] ?? '')), '/');
         $cleanDir = preg_replace('#/public$#', '', $scriptDir);
         define("APP_PATH", $protocol . $host . $cleanDir);

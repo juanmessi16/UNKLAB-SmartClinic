@@ -1,4 +1,4 @@
-Options -Indexes -Multiviews
+Options -Indexes
 ServerSignature Off
 
 # Error Documents diarahkan secara dinamis atau ditangani router App.php
