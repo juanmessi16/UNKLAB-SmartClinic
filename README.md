@@ -4,6 +4,27 @@ Sistem Informasi Layanan Kesehatan Kampus & Unit Kesehatan Mahasiswa (**UKESMAS*
 
 ---
 
+## 🌐 Live Demo & Akses Web (Online 24 Jam)
+
+Aplikasi **UNKLAB SmartClinic** telah aktif secara online dan dapat langsung diakses serta diuji coba melalui peramban:
+
+👉 **[https://unklab-smartclinic.freedev.app/](https://unklab-smartclinic.freedev.app/)**
+
+### 🔑 Akses Cepat Akun Demo (Online & Lokal)
+Pada halaman login telah disediakan panel **"Akses Akun Demo (Klik untuk isi cepat)"** untuk mengisi kredensial secara otomatis bagi kelima peran:
+
+| Peran (Role) | Nama Akun Demo | Username | Password | Default Redirect & Hak Akses Utama |
+| :--- | :--- | :--- | :--- | :--- |
+| **Super Administrator** | `Super Administrator` | `superadmin` | `admin123` | `/dashboard/` — Akses kendali penuh sistem, manajemen user, konfigurasi Gemini AI, dan monitor WAF. |
+| **Clinic Administrator** | `Kepala UKESMAS` | `clinicadmin` | `admin123` | `/dashboard/` — Analitik & *forecasting* stok obat, laporan kunjungan klinik, dan jadwal dokter jaga. |
+| **Medical Staff** | `Dokter / Perawat` | `medstaff` | `medis123` | `/dashboard/` — Pemanggilan antrean live (FIFO), pencatatan EMR, resep digital, dan penerbitan surat sakit. |
+| **Lecturer** | `Dosen` | `dosen` | `dosen123` | `/verifikasi/` — Welcome banner khusus dosen, scan QR/Barcode kamera verifikasi surat sakit mahasiswa (`SKS-XXXX-XXXX`), dan layanan periksa. |
+| **Student** | `Juan Messi Septhian Tulengkey` | `mahasiswa` | `mahasiswa123` | `/dashboard/` — Konsultasi keluhan mandiri berbasis AI 24 jam, ambil antrean online, riwayat EMR, dan unduh/cetak surat sakit. |
+
+> **Catatan Mahasiswa:** Mahasiswa juga dapat melakukan login menggunakan akun resmi Google UNKLAB (`@student.unklab.ac.id` / `@unklab.ac.id`) melalui tombol **Login dengan Akun UNKLAB** (Google OAuth 2.0).
+
+---
+
 ## 🚀 Cara Menjalankan Program (Local XAMPP)
 
 ### 1. Pastikan Apache & MySQL di XAMPP Aktif
@@ -49,7 +70,7 @@ Halaman Login (`/login/`) menyediakan tombol *quick-fill* instan untuk kelima pe
 | **Clinic Administrator** | `Kepala UKESMAS` | `clinicadmin` | `admin123` | `/dashboard/` — Analitik & *forecasting* stok obat, laporan kunjungan klinik, dan jadwal dokter jaga. |
 | **Medical Staff** | `Dokter / Perawat` | `medstaff` | `medis123` | `/dashboard/` — Pemanggilan antrean live (FIFO), pencatatan EMR, resep digital, dan penerbitan surat sakit. |
 | **Lecturer** | `Dosen` | `dosen` | `dosen123` | `/verifikasi/` — Welcome banner khusus dosen, verifikasi surat sakit mahasiswa (`SKS-XXXX-XXXX`), dan layanan periksa. |
-| **Student** | `Mahasiswa` | `mahasiswa` | `mahasiswa123` | `/dashboard/` (Tampilan Khusus Mahasiswa) — Konsultasi keluhan mandiri berbasis AI, ambil antrean online, riwayat EMR, dan unduh/cetak surat sakit. |
+| **Student** | `Juan Messi Septhian Tulengkey` | `mahasiswa` | `mahasiswa123` | `/dashboard/` (Tampilan Khusus Mahasiswa) — Konsultasi keluhan mandiri berbasis AI, ambil antrean online, riwayat EMR, dan unduh/cetak surat sakit. |
 
 ---
 
