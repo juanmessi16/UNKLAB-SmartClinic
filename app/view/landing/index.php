@@ -8,7 +8,7 @@ $dashUrl = in_array($userRole, ['lecturer', 'dosen'], true) ? url('verifikasi/')
 <html lang="id">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?= e($data['title'] ?? 'UNKLAB SmartClinic - UKESMAS Universitas Klabat') ?></title>
   <link rel="icon" type="image/png" href="<?= asset('img/unklab-logo.png') ?>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,7 +16,7 @@ $dashUrl = in_array($userRole, ['lecturer', 'dosen'], true) ? url('verifikasi/')
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="<?= asset('vendor/bootstrap/css/bootstrap.min.css') ?>">
   <link rel="stylesheet" href="<?= asset('vendor/bootstrap-icons/bootstrap-icons.min.css') ?>">
-  <link rel="stylesheet" href="<?= asset('css/app.css') ?>?v=<?= APP_VERSION ?>.4">
+  <link rel="stylesheet" href="<?= asset('css/app.css') ?>?v=<?= APP_VERSION ?>.5">
   <style>
     html, body {
       height: 100%;

@@ -6,7 +6,7 @@ $googleReady = !empty($data['google_configured']);
 <html lang="id">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?= e($data['title']) ?></title>
   <link rel="icon" type="image/png" href="<?= asset('img/unklab-logo.png') ?>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,7 +14,7 @@ $googleReady = !empty($data['google_configured']);
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="<?= asset('vendor/bootstrap/css/bootstrap.min.css') ?>">
   <link rel="stylesheet" href="<?= asset('vendor/bootstrap-icons/bootstrap-icons.min.css') ?>">
-  <link rel="stylesheet" href="<?= asset('css/app.css') ?>?v=<?= APP_VERSION ?>.4">
+  <link rel="stylesheet" href="<?= asset('css/app.css') ?>?v=<?= APP_VERSION ?>.5">
   <style>
     body {
       background: radial-gradient(circle at 50% 12%, #E6FFFA 0%, #F8FAFC 45%, #F1F5F9 100%);
