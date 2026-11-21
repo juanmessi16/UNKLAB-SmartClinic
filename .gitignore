@@ -1,0 +1,8 @@
+# Kredensial rahasia lokal
+app/config/secrets.php
+.env
+
+# File sistem & log
+*.log
+.DS_Store
+Thumbs.db
